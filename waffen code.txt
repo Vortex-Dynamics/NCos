@@ -1,0 +1,30 @@
+################################
+system
+################################
+ein ESP ist multithreaded und verwendet einen kern immer um den motor zu starten und den anderen 
+um button checks zu machen und den display zu steuern
+
+################################
+abschuss
+################################
+ein schuss kann abgegeben werden wenn der trigger betätigt wird es wird mit hilfe eines metall touch ein signal 
+an den esp geleitet der dann die motoren anweisst wenn kein safe mode aktiv ist sich zu drehen 
+
+Wenn du den Finger am Trigger hast dreht der Motor hoch
+Wenn du den Trigger drückst feuert das solenoid 
+Wenn du den Trigger nicht mehr drückst gehen die Motoren wieder ins idle
+
+die motor rpm werden ausgelesen und der solenoid erst freigegeben wenn der motor volle leistung hat
+der solenoiod schiebt dann den dart in das flywheel
+
+die modes weden durch den modeswitch eingestellt er leitet strom auf dafür vorgesehene pins
+
+geladen ist eine waffe im real world sinne immer ein solenoid schiebt bei einem ausgelössten schuss
+den dart aus dem magazin in das flywheel wo er dann sofort abgeschossen wird
+
+in full auto bleibt der trigger gedrückt und es werden immer weiter darts geladen und in das flywheel befördert
+in semi wird ein dart geladen und danach muss der trigger neu gedrückt werden
+in safe mode können die motoren nicht aktiviert werden und kein schuss kann abgegeben werden
+
+wenn die waffe das hat, wird der ladehebel mit bewegt direkt verfügt er nicht über eine funktion und ist rein 
+optisch mit einem hebel mechanismus wird er geschoben wenn ein schuss abgesetzt wird

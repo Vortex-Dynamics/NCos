@@ -23,6 +23,6 @@
 #define dispSCL 22
 
 // Selection interface for display
-#define selectorSelectA 17
-#define selectroSelectr 18
+#define selectorSelectUP 17
+#define selectorSelectDOWN 18
 #define selectorConfirm 8

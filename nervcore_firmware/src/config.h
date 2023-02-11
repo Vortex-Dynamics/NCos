@@ -2,6 +2,8 @@
  * System Parameters
 ================================== */
 #define baut 9600
+#define RPM 550
+#define solenoidDelay (RPM/(60*60))*1000
 
 // weapon trigger
 #define trigger 16

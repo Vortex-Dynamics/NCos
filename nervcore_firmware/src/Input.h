@@ -1,0 +1,1 @@
+bool IsButtonPressed(int pin);

@@ -1,0 +1,1 @@
+void FireSolenoid(int pin);

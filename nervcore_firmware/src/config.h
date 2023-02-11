@@ -1,3 +1,8 @@
+/** =================================
+ * System Parameters
+================================== */
+#define baut 9600
+
 // weapon trigger
 #define trigger 16
 

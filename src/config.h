@@ -6,7 +6,7 @@
 #define solenoidDelay (RPM/(60*60))*1000
 // Battery Configuration
 #define batteryCalibration 0
-#define batterySensor 15
+#define batterySensor 10
 
 /** =================================
  * Shooting Mechanism
@@ -25,8 +25,8 @@
  * Display
 ================================== */
 // i2c pins for display
-#define dispSDA 21
-#define dispSCL 22
+#define dispSDA 15
+#define dispSCL 16
 
 // Selection interface for display
 #define selectorSelectUP 17

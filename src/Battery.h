@@ -1,0 +1,2 @@
+int BatteryVoltageInPercent();
+int BatteryVoltage();

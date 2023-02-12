@@ -4,7 +4,13 @@
 #define baut 9600
 #define RPM 550
 #define solenoidDelay (RPM/(60*60))*1000
+// Battery Configuration
+#define batteryCalibration 0
+#define batterySensor 15
 
+/** =================================
+ * Shooting Mechanism
+================================== */
 // weapon trigger
 #define trigger 16
 

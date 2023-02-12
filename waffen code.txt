@@ -1,12 +1,12 @@
-################################
+################################################################################################################################
 system
-################################
+################################################################################################################################
 ein ESP ist multithreaded und verwendet einen kern immer um den motor zu starten und den anderen 
 um button checks zu machen und den display zu steuern
 
-################################
+################################################################################################################################
 abschuss
-################################
+################################################################################################################################
 ein schuss kann abgegeben werden wenn der trigger betätigt wird es wird mit hilfe eines metall touch ein signal 
 an den esp geleitet der dann die motoren anweisst wenn kein safe mode aktiv ist sich zu drehen 
 

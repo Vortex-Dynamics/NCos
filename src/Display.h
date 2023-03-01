@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
-// start a Display Manager Instance
-void DisplayManager(QueueHandle_t queue);
+// Display a Message on a screen
+int displayMessage();
 
 // gets the currently active displayIndex
 int getDisplayIndex();

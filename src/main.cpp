@@ -13,29 +13,48 @@ TaskHandle_t  tMotorDriver;
 TaskHandle_t  tSolenoid; 
 TaskHandle_t  tInput; 
 QueueHandle_t queue;
+char txBuffer[50];
 
 // continuesly calls task for thread
 void DisplayManageTask(void * pvParameters) {
   for(;;) {
-    DisplayManager(queue);
+    // DisplayManager(queue);
   }
 }
 
 void MotorManageTask(void * pvParameters) {
   for(;;) {
-    ManageMotors(queue);
+    if(getMotorState()) {
+        // tut das was
+    } else {
+        // tu was anderes
+    }
   }
 }
 
 void InputTask(void * pvParameters) {
   for(;;) {
-    ManageInput(queue);
+    if (IsButtonPressed(trigger)) {
+        //motorSendToQueue = false;
+        if(/* motorSendToQueue && */ analogRead(launchPWM_bottom) == 0 && analogRead(launchPWM_top) == 0) {
+            xQueueSend(queue, "motorStart", 0);
+            //motorSendToQueue = true;
+            startMotors();
+        }
+    }
+
+    if (!IsButtonPressed(trigger)){
+        if(analogRead(launchPWM_bottom) > 0 && analogRead(launchPWM_top) > 0) {
+            xQueueSend(iQueue, "motorStop", 0);
+            stopMotors();
+        }
+    }
   }
 }
 
 void SolenoidTask(void * pvParameters) {
   for(;;) {
-    ManageSolenoid(queue);
+    // ManageSolenoid(queue);
   }
 }
 
@@ -50,7 +69,6 @@ void setup() {
   pinMode(selectorSelectDOWN, INPUT);
   pinMode(selectorConfirm, INPUT);
 
-  char txBuffer[50];
   queue = xQueueCreate(5, sizeof(txBuffer)); 
   if (queue == 0)
   {

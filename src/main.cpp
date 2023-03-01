@@ -23,6 +23,7 @@ void DisplayManageTask(void * pvParameters) {
 }
 
 void MotorManageTask(void * pvParameters) {
+  char rxBuffer[50];
   for(;;) {
     if( xQueueReceive(queue, &(rxBuffer), (TickType_t)0)){
       printf("Received data from queue == %s\n", rxBuffer);

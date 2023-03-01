@@ -24,10 +24,13 @@ void DisplayManageTask(void * pvParameters) {
 
 void MotorManageTask(void * pvParameters) {
   for(;;) {
-    if(getMotorState()) {
-        // tut das was
-    } else {
-        // tu was anderes
+    if( xQueueReceive(queue, &(rxBuffer), (TickType_t)0)){
+      printf("Received data from queue == %s\n", rxBuffer);
+      if(getMotorState()) {
+          // tut das was
+      } else {
+          // tu was anderes
+      }
     }
   }
 }
@@ -37,7 +40,8 @@ void InputTask(void * pvParameters) {
     if (IsButtonPressed(trigger)) {
         //motorSendToQueue = false;
         if(/* motorSendToQueue && */ analogRead(launchPWM_bottom) == 0 && analogRead(launchPWM_top) == 0) {
-            xQueueSend(queue, "motorStart", 0);
+            sprintf(txBuffer, "motorStart");
+            xQueueSend(queue, txBuffer, (TickType_t)0);
             //motorSendToQueue = true;
             startMotors();
         }
@@ -45,7 +49,8 @@ void InputTask(void * pvParameters) {
 
     if (!IsButtonPressed(trigger)){
         if(analogRead(launchPWM_bottom) > 0 && analogRead(launchPWM_top) > 0) {
-            xQueueSend(iQueue, "motorStop", 0);
+            sprintf(txBuffer, "motorStop");
+            xQueueSend(queue, txBuffer, (TickType_t)0);
             stopMotors();
         }
     }
